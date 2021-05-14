@@ -73,14 +73,28 @@ export class LendLiteratureComponent implements OnInit {
   }
 
   selectLiterature(lid:number){
+    if(lid==null || lid==0 ){
+      alert("Please enter an literature id");
+      return;
+    }
     this.literatureService.getLiteratureByID(lid).subscribe(data => {
       this.literature = data;
-    } , error => console.log(error));
+    } , error => {
+      console.log(error);
+      alert("No literature exists with relavant ID!");
+    });
   }
   selectUser(uhid:number){
+    if(uhid==null || uhid==0 ){
+      alert("Please enter an user id");
+      return;
+    }
     this.userService.getUserByID(uhid).subscribe(data => {
       this.p.setUserHandled(data);
-    } , error => console.log(error));
+    } , error => {
+      console.log(error);
+      alert("No User exists with relavant ID!");
+    });
   }
 
   addToRegister(){
