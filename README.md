@@ -22,10 +22,10 @@ So filtering out book from whole book list becomes an easier task
 
 Steps for running app
 ----------------------
-1. Install Postgress and restore database
-2. Running backend
-3. Running front end
-4. Run in browser
+1. postgress sql installation and database restortion
+2. Running the back end
+3. Running the front end
+4. Running web app in vbrowser
 
 1.Installing postgress and restoring database
 ----------------------------------------------
@@ -65,9 +65,10 @@ open terminal inside root folder
 of frontend "librarymanagement-frontend"
 
 
-4.Running in Browser
-----------------------
-open browser and copy paste
+4.Running webapp in Browser
+---------------------------
+open browser and travel to below url
+(copy & paste in address bar)
 http://localhost:4200
 
 
