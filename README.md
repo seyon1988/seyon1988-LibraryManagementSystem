@@ -27,8 +27,8 @@ Steps for running app
 3. Running front end
 4. Run in browser
 
-Postgress Install and restore database
---------------------------------------
+1.Installing postgress and restoring database
+----------------------------------------------
 First we should install postgress sql
 
 then create a database as 
@@ -42,8 +42,8 @@ assign full rights to seyon for database librarymanagementsystem
 after restore the database file "DB_Backup"
 
 
-Back end running
-----------------
+2.Back end running
+--------------------
 Install maven
 open terminal inside root folder 
 of backend "LibraryManagementSystemBackEnd"
@@ -57,16 +57,16 @@ After Building run it by
 mvn spring-boot:run
 
 
-Front end running
-------------------
+3.Front end running
+--------------------
 Install NodeJs
 Install Angular_CLI
 open terminal inside root folder 
 of frontend "librarymanagement-frontend"
 
 
-Running in Browser
--------------------
+4.Running in Browser
+----------------------
 open browser and copy paste
 http://localhost:4200
 
