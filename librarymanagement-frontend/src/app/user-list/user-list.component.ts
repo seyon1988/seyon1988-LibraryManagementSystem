@@ -48,16 +48,13 @@ export class UserListComponent implements OnInit {
   }
 
   selectUser(){
-    if(this.userID==null  ){
+    if(this.userID==null || this.userID==0  ){
       alert("Please type an id in text box");
       return;
     }
     this.userService.getUserByID(this.userID).subscribe( data => {
-
-      if(data.id!=undefined){
-        this.users = [];
-        this.users.push(data);
-      }else alert("Please type an id in text box");
+      this.users = [];
+      this.users.push(data);
     } , error => {
       alert("No results found for your query");
       console.log(error)} );

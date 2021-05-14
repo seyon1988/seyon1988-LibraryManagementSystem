@@ -72,16 +72,13 @@ export class LiteratureListComponent implements OnInit {
   }
 
   selectLiterature(){
-    if(this.literatureID==null  ){
+    if(this.literatureID==null || this.literatureID==0 ){
       alert("Please type an id in text box");
       return;
     }
     this.literatureService.getLiteratureByID(this.literatureID).subscribe( data => {
-
-      if(data.id!=undefined){
-        this.literatures = [];
-        this.literatures.push(data);
-      }else alert("Please type an id in text box");
+      this.literatures = [];
+      this.literatures.push(data);
     } , error => {
       alert("No results found for your query");
       console.log(error)} );

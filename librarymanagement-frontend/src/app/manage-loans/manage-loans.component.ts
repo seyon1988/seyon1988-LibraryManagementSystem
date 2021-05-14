@@ -54,21 +54,29 @@ export class ManageLoansComponent implements OnInit {
 
 
   selectUser(){
-    this.showList = false;
-    this.lends = [] ;
-    this.literatures = [];
-    this.users = [];
-    this.lendService.getLendByUserID(this.sUhid).subscribe( data => {
-      this.lends = data ;
-      for(let lend of this.lends){
-        this.userService.getUserByID(lend.userID).subscribe(data => {
-          this.users.push(data);
-          this.literatureService.getLiteratureByID(lend.materialID).subscribe(data => {
-            this.literatures.push(data);
-            if(this.lends.length==this.literatures.length) this.showList = true;
+    if( this.sUhid==null || this.sUhid==0 ){
+      alert("Please fill user id");
+      return;
+    }
+
+    this.lendService.getLendByUserID(this.sUhid).subscribe( data1 => {
+      
+      if(data1.length>=1){
+        this.showList = false;
+        this.lends = [] ;
+        this.literatures = [];
+        this.users = [];
+        this.lends = data1 ;
+        for(let lend of data1){
+          this.userService.getUserByID(lend.userID).subscribe(data => {
+            this.users.push(data);
+            this.literatureService.getLiteratureByID(lend.materialID).subscribe(data => {
+              this.literatures.push(data);
+              if(this.lends.length==this.literatures.length) this.showList = true;
+            } , error => console.log(error));
           } , error => console.log(error));
-        } , error => console.log(error));
-      }
+        }
+      }else alert("Relavant search did not return any records");
     } , error => console.log(error));
   }
 
