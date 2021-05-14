@@ -16,17 +16,19 @@ password - stu
 
 Assumptions
 -----------
+Librarian Also can borrow books
+
 User cannot register himself admin has to add him
 When user added by admin
 their will be an user id auto generated (serial type integer)
-User will be given a printed id card with , above mentioned ID number
-When user borrowing or returing the book user will bring the ID card (for id number)
+User will be given a printed id card, with above mentioned ID number
+When user borrowing or returing the book user will bring the ID card (for getting  user's id number)
 So filtering out user from whole user list becomes an easier task
-(otherwise librarian should select the user from whole user list)
+(otherwise librarian should select the user from whole user list by scrolling down)
 
 Similarly when adding literatures also an user id auto generated (serial type integer)
 It will be written on the literature
-So filtering out book from whole book list becomes an easier task
+So filtering out book from whole book list becomes an easier task (for getting literature's id number)
 (otherwise librarian should select the literature from whole literature list)
 
 Steps for running app
