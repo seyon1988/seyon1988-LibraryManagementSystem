@@ -1,0 +1,229 @@
+<nav  ng-model="foo" class="navbar navbar-expand-sm   navbar-dark" >
+
+
+
+  <img  src="/assets/images/user.png" alt="image">
+  &nbsp;&nbsp;
+  <ul class = "navbar-nav" style="margin-right: 0px; float: right; color: white;">
+
+
+    <li ><a  type="button" (click)="login()"  class="nav-link">
+      <div style="color: white; font-size: 20px">{{p.loginText}}</div></a></li>&nbsp;&nbsp;
+
+
+    <li ><a type="button" (click)="goHome()"  class="nav-link">
+      <div style="color: white; font-size: 20px">Home</div></a></li>&nbsp;&nbsp;
+
+
+    <li><a type="button" (click)="viewBooks()" class="nav-link">
+      <div style="color: white; font-size: 20px">View Books</div></a></li>&nbsp;&nbsp;
+
+
+    <li ><a *ngIf="p.signedin"  type="button" (click)="goToMyLoans()"  class="nav-link">
+      <div style="color: white; font-size: 20px">MyLoans</div></a></li>&nbsp;&nbsp;
+
+
+    <li ><a *ngIf="p.isAdmin"  type="button"  (click)="manageUsers()" class="nav-link">
+      <div style="color: white; font-size: 20px">Manage Users</div></a></li>&nbsp;&nbsp;
+
+
+    <li ><a *ngIf="p.isAdmin"  type="button" (click)="manageBooks()"  class="nav-link">
+      <div style="color: white; font-size: 20px"> Manage Books</div></a></li>&nbsp;&nbsp;
+
+
+    <li ><a *ngIf="p.isAdmin"  type="button" (click)="manageLending()"  class="nav-link">
+      <div style="color: white; font-size: 20px"> Manage Lending</div></a></li>&nbsp;&nbsp;
+
+  </ul>
+</nav>
+
+
+<table style="width: 1100px; margin-left: 100px; margin-top: 100px; border: 1px solid black;" >
+  <tr>
+    <th style="padding: 5px; padding-left: 10px; padding-right: 10px;">
+      Lend a book to user : <br>Instructions - You came to this page by clicking Lend button on previos user or material.  
+      Your previous selection is alreay appearing here.<br>
+      You can select a new material for selected user or You can select new user for selected material<br>
+      You can also modify both user and material. After selecting user and material click Lend Button at Bottom.<br>
+      To get ID Numbers visit manage users or manage books page
+
+    </th>
+  </tr>
+</table>
+
+<table style="border: 1px solid rgb(255, 255, 255);  ">
+  <tr>
+    <td>
+      <br>
+      <table style="width: 500px; margin-left: 100px;border: 1px solid black;" >
+      
+        <br>
+        <table style="width: 400px; margin: auto;" >
+          <tr style="border: 1px solid black; text-align: center; font-weight: bold;
+          background: rgb(112, 112, 112); color: white;">
+              <td>Select Material using ID</td>
+          </tr>
+        </table>   
+
+        <br>
+        <table style="width: 400px; margin: auto;" >
+          <tr style="border: 1px solid black; text-align: center; font-weight: bold;
+          background: rgb(255, 255, 255); color: rgb(0, 0, 0);">
+              <td>
+                <form ng-controller="formCtrl">     
+                  <input placeholder="You can type a Material ID & set new Material" style="width: 70%;"  type="text" name="name" [(ngModel)]="sLid" />
+                  <button type="button" style="width: 30%;" (click)="selectLiterature(sLid)">Select</button>
+                </form>
+              </td>
+          </tr>
+        </table>
+
+        <br>
+        <table style="width: 400px; margin: auto;" >
+          <tr style="border: 1px solid black; text-align: center; font-weight: bold;
+          background: rgb(83, 161, 161); color: white;">
+              <td>Literature Details</td>
+          </tr>
+        </table>
+
+        <table style="width: 400px; margin: auto;" >
+
+          <br>
+          <tr style="border: 1px solid black; ">
+              <td>&nbsp;&nbsp;&nbsp;Material ID</td><td>{{literature.id}}</td>
+          </tr>
+          <br>
+          <tr style="border: 1px solid black; ">
+              <td>&nbsp;&nbsp;&nbsp;Title</td><td>{{literature.title}}</td>
+          </tr>
+          <br>
+          <tr style="border: 1px solid black; ">
+              <td>&nbsp;&nbsp;&nbsp;Author</td><td>{{literature.author}}</td>
+          </tr>
+          <br>
+          <tr style="border: 1px solid black;" >
+              <td>&nbsp;&nbsp;&nbsp;Category</td><td>{{literature.category}}</td>
+          </tr>
+          <br>
+          <tr style="border: 1px solid black;" >
+              <td>&nbsp;&nbsp;&nbsp;Date</td><td>{{literature.issuedDate}}</td>
+          </tr>
+          <br>
+          <tr style="border: 1px solid black;" >
+              <td>&nbsp;&nbsp;&nbsp;Total Books</td><td>{{literature.totalBooks}}</td>
+          </tr>
+          <br>
+          <tr style="border: 1px solid black;" >
+              <td>&nbsp;&nbsp;&nbsp;Available Books</td><td>{{getAvailableBooks(literature)}}</td>
+          </tr>
+          <br>
+
+          
+
+      </table>
+
+
+      </table>
+
+
+
+
+    </td>
+    
+    
+    <td>
+
+
+
+
+      
+      <br>
+      <table style="width: 500px; margin-left: 100px;border: 1px solid black;" >
+           
+        
+
+        <br>
+        <table style="width: 400px; margin: auto;" >
+          <tr style="border: 1px solid black; text-align: center; font-weight: bold;
+          background: rgb(112, 112, 112); color: white;">
+              <td>Select User using ID</td>
+          </tr>
+        </table>   
+
+        <br>
+        <table style="width: 400px; margin: auto;" >
+          <tr style="border: 1px solid black; text-align: center; font-weight: bold;
+          background: rgb(255, 255, 255); color: rgb(0, 0, 0);">
+              <td>
+                <form ng-controller="formCtrl">     
+                  <input placeholder="You can type a user ID & set new user" style="width: 70%;"  type="text" name="name" [(ngModel)]="sUid" />
+                  <button type="button" style="width: 30%;" (click)="selectUser(sUid)">Select</button>
+                </form>
+              </td>
+          </tr>
+        </table>
+        
+        
+        <br>
+            <table style="width: 400px; margin: auto;" >
+              <tr style="border: 1px solid black; text-align: center; font-weight: bold;
+              background: rgb(83, 161, 161); color: white;">
+                  <td>User Details</td>
+              </tr>
+          </table>
+
+          <table style="width: 400px; margin: auto;" >
+
+            <br>
+
+            <tr style="border: 1px solid black;" >
+                <td>&nbsp;&nbsp;&nbsp;User ID</td><td>{{p.userHandled.id}}</td>
+            </tr>
+
+            <br>
+            <tr style="border: 1px solid black; ">
+                <td>&nbsp;&nbsp;&nbsp;First Name</td><td>{{p.userHandled.firstName}}</td>
+            </tr>
+            <br>
+            <tr style="border: 1px solid black; ">
+                <td>&nbsp;&nbsp;&nbsp;Last Name</td><td>{{p.userHandled.lastName}}</td>
+            </tr>
+            <br>
+            <tr style="border: 1px solid black; ">
+                <td>&nbsp;&nbsp;&nbsp;Email</td><td>{{p.userHandled.emailID}}</td>
+            </tr>
+            <br>
+            <tr style="border: 1px solid black;" >
+                <td>&nbsp;&nbsp;&nbsp;Role</td><td>{{p.userHandled.role}}</td>
+            </tr>
+            <br>
+            <tr style="border: 1px solid black;" >
+                <td>&nbsp;&nbsp;&nbsp;Book Quota</td><td>{{p.userHandled.bookQuota}}</td>
+            </tr>
+            <br>
+            <tr style="border: 1px solid black;" >
+                <td>&nbsp;&nbsp;&nbsp;Utilized Quota</td><td>{{p.userHandled.utilizedQuota}}</td>
+            </tr>
+
+            <br>
+
+          </table>
+      
+      
+      </table>
+
+
+
+
+    </td>
+    
+  </tr>
+  <br><br>
+  <tr>
+    <button style="width : 500px;margin-left: 100px;" class="btn btn-success" (click)="addToRegister()" >
+      Lend</button>
+  </tr>
+  <br>
+</table>
+
+<br><br><br><br>

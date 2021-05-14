@@ -1,0 +1,116 @@
+<nav  ng-model="foo" class="navbar navbar-expand-sm   navbar-dark" >
+
+
+
+  <img  src="/assets/images/user.png" alt="image">
+  &nbsp;&nbsp;
+  <ul class = "navbar-nav" style="margin-right: 0px; float: right; color: white;">
+
+
+    <li ><a  type="button" (click)="login()"  class="nav-link">
+      <div style="color: white; font-size: 20px">{{p.loginText}}</div></a></li>&nbsp;&nbsp;
+
+
+    <li ><a type="button" (click)="goHome()"  class="nav-link">
+      <div style="color: white; font-size: 20px">Home</div></a></li>&nbsp;&nbsp;
+
+
+    <li><a type="button" (click)="viewBooks()" class="nav-link">
+      <div style="color: white; font-size: 20px">View Books</div></a></li>&nbsp;&nbsp;
+
+
+    <li ><a *ngIf="p.signedin"  type="button" (click)="goToMyLoans()"  class="nav-link">
+      <div style="color: white; font-size: 20px">MyLoans</div></a></li>&nbsp;&nbsp;
+
+
+    <li ><a *ngIf="p.isAdmin"  type="button"  (click)="manageUsers()" class="nav-link">
+      <div style="color: white; font-size: 20px">Manage Users</div></a></li>&nbsp;&nbsp;
+
+
+    <li ><a *ngIf="p.isAdmin"  type="button" (click)="manageBooks()"  class="nav-link">
+      <div style="color: white; font-size: 20px"> Manage Books</div></a></li>&nbsp;&nbsp;
+
+
+    <li ><a *ngIf="p.isAdmin"  type="button" (click)="manageLending()"  class="nav-link">
+      <div style="color: white; font-size: 20px"> Manage Lending</div></a></li>&nbsp;&nbsp;
+
+  </ul>
+</nav>
+
+
+
+
+<div style="margin-left: 100px; margin-top: 100px; margin-bottom: 200px;">
+
+  <h3>
+    <table  style="width: 1100px;  margin-top: 55px; text-align: center; font-weight: bold;
+    background: rgb(112, 112, 112); color: white; border: 1px solid black; " >
+
+      <tr style="padding: 5px;">
+
+        <th style="padding: 5px; width:470px; padding-left: 10px; padding-right: 10px;">Manage Users</th>
+
+        <th style="padding: 10px; margin-left: 0px;">
+          <button  style="width : 450px;" class="btn btn-success" 
+          (click)="createUser()" >Create New User</button>
+        </th>
+
+
+      </tr>
+    </table>
+
+        <br>
+
+
+       
+        <table  style="width: 1100px;  " >
+          <tr style="border: 1px solid black; text-align: center; font-weight: bold;
+          background: rgb(255, 255, 255); color: rgb(0, 0, 0);">
+              <td>
+                <form ng-controller="formCtrl">     
+                  <input placeholder="You can type a user id and filter out specific user!" style="width: 70%;"  type="text" name="name" [(ngModel)]="userID" />
+                  <button type="button" style="width: 15%;" (click)="selectUser()">Select</button>
+                  <button type="button" style="width: 15%;" (click)="getUsers()">Show All</button>
+                </form>
+              </td>
+          </tr>
+        </table>
+        <br>
+      </h3>
+
+
+  
+    <br>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Role</th>
+            <th>Email</th>
+            <th>Book Quota</th>
+            <th>Utilized Quota</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let user of users" >
+            <td>{{user.id}}</td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.role}}</td>
+            <td>{{user.emailID}}</td>
+            <td>{{user.bookQuota}}</td>
+            <td>{{user.utilizedQuota}}</td>
+            <td>
+                <button id="eubtn" (click)="updateUser(user.id)" class="btn bnt-info">Update</button>
+                <button id="dubtn" (click)="deleteUser(user.id)" class="btn bnt-danger" style="margin-left: 10px;">Delete</button>
+                <button id="vubtn" (click)="viewUser(user.id)" class="btn bnt-danger" style="margin-left: 10px;">View</button>
+                <button id="lubtn" (click)="lendLiterature(user.id)" class="btn bnt-danger" style="margin-left: 10px;">Lend</button>
+            </td>
+        </tr> 
+    </tbody>
+</table>
+</div>
+<br>

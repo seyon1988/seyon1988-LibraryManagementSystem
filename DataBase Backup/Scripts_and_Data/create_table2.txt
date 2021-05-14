@@ -1,0 +1,18 @@
+
+CREATE TABLE public.literature
+(
+    id integer NOT NULL DEFAULT nextval('literature_id_seq'::regclass),
+    author character varying COLLATE pg_catalog."default",
+    category character varying COLLATE pg_catalog."default",
+    isbn character varying COLLATE pg_catalog."default",
+    issued_date character varying COLLATE pg_catalog."default",
+    title character varying COLLATE pg_catalog."default",
+    total_books integer NOT NULL DEFAULT 10,
+    lended_books integer NOT NULL DEFAULT 0,
+    CONSTRAINT literature_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.literature
+    OWNER to seyon;

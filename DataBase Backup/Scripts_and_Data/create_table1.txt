@@ -1,0 +1,12 @@
+CREATE TABLE public.lend_register
+(
+    id integer NOT NULL DEFAULT nextval('lend_register_id_seq'::regclass),
+    material_id integer,
+    user_id integer,
+    CONSTRAINT lend_register_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.lend_register
+    OWNER to seyon;

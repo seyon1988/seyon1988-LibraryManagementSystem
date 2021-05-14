@@ -1,0 +1,95 @@
+<nav  ng-model="foo" class="navbar navbar-expand-sm   navbar-dark" >
+
+
+
+  <img  src="/assets/images/user.png" alt="image">
+  &nbsp;&nbsp;
+  <ul class = "navbar-nav" style="margin-right: 0px; float: right; color: white;">
+
+
+    <li ><a  type="button" (click)="login()"  class="nav-link">
+      <div style="color: white; font-size: 20px">{{p.loginText}}</div></a></li>&nbsp;&nbsp;
+
+
+    <li ><a type="button" (click)="goHome()"  class="nav-link">
+      <div style="color: white; font-size: 20px">Home</div></a></li>&nbsp;&nbsp;
+
+
+    <li><a type="button" (click)="viewBooks()" class="nav-link">
+      <div style="color: white; font-size: 20px">View Books</div></a></li>&nbsp;&nbsp;
+
+
+    <li ><a *ngIf="p.signedin"  type="button" (click)="goToMyLoans()"  class="nav-link">
+      <div style="color: white; font-size: 20px">MyLoans</div></a></li>&nbsp;&nbsp;
+
+
+    <li ><a *ngIf="p.isAdmin"  type="button"  (click)="manageUsers()" class="nav-link">
+      <div style="color: white; font-size: 20px">Manage Users</div></a></li>&nbsp;&nbsp;
+
+
+    <li ><a *ngIf="p.isAdmin"  type="button" (click)="manageBooks()"  class="nav-link">
+      <div style="color: white; font-size: 20px"> Manage Books</div></a></li>&nbsp;&nbsp;
+
+
+    <li ><a *ngIf="p.isAdmin"  type="button" (click)="manageLending()"  class="nav-link">
+      <div style="color: white; font-size: 20px"> Manage Lending</div></a></li>&nbsp;&nbsp;
+
+  </ul>
+</nav>
+<br><br><br><br>
+
+
+
+
+<div class="col-md-8 offser-md-3" style="margin-left: 100px;">
+    <h3  class="display-5"  >Update User</h3> 
+    <form (ngSubmit) = "onSubmit()">
+    
+    
+        <div class="form-group">
+            <label >First Name</label>
+            <input type="text" class="form-control" id="firstName" required   [(ngModel)]="p.userHandled.firstName" name="firstName">
+        </div>
+      
+        <div class="form-group">
+            <label >Last Name</label>
+            <input type="text" class="form-control" id="lastName" required [(ngModel)]="p.userHandled.lastName" name="lastName">
+        </div>
+        
+
+        <div   class="form-group">
+          <label>Select Role</label>
+          <select  [(ngModel)]="p.userHandled.role" [ngModelOptions]="{standalone: true}" class="form-control" >
+            <option value="Student">Student</option>
+            <option value="Instructor">Instructor</option>
+            <option value="Lecturer">Lecturer</option>
+            <option value="Librarian">Librarian</option>
+          </select>
+        </div>
+
+
+        <div class="form-group">
+            <label >Email ID</label>
+            <input type="text" class="form-control" id="emailID" required [(ngModel)]="p.userHandled.emailID" name="emailID">
+        </div>
+      
+        <div class="form-group">
+            <label >Password</label>
+            <input type="text" class="form-control" id="password" required [(ngModel)]="p.userHandled.password" name="password">
+        </div>
+    
+
+        <div class="form-group">
+            <label >Book Quota</label>
+            <input type="text" class="form-control" id="bookQuota" required [(ngModel)]="p.userHandled.bookQuota" name="bookQuota">
+        </div>
+
+
+        <button type="submit" class="btn btn-success">Submit</button>
+    
+    
+    </form>
+    </div>
+    
+    
+    <div style="height: 100px;" ></div>
