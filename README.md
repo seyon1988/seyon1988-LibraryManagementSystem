@@ -5,6 +5,15 @@ This Project is submitted for OUSL as an Assignment for job.
 This is project is about library management system.
 
 
+Sample Admin Login
+Username - lib
+password - lib
+
+sample Student Login
+Username/Email - stu
+password - stu
+
+
 Assumptions
 -----------
 User cannot register himself admin has to add him
