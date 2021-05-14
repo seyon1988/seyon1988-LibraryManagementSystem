@@ -78,10 +78,12 @@ Spring Boot : v2.4.5
 
 Any inquires
 -----------
-0770224064
-seyon1988@gmail.com
+Mobile - 0770224064
+
+Email - seyon1988@gmail.com
 
 
 Thank you!
+
 Seyon
 
